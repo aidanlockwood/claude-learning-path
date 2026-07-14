@@ -1,0 +1,5 @@
+.env
+*.DS_Store
+
+/cli_project
+/cli_project_COMPLETE
