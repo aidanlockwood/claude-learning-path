@@ -23,15 +23,19 @@ def add_assistant_message(messages, text):
     }
     messages.append(assistant_message)
 
-def chat(messages, system = None):
+def chat(messages, system = None, stream = False, output_config = None):
     params = {
         "model": model,
         "max_tokens": 1000,
-        "messages": messages
+        "messages": messages,
+        "stream": stream
     }
 
     if system:
         params["system"] = system
+
+    if output_config:
+        params["output_config"] = output_config
 
     message = client.messages.create(**params)
 
