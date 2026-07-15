@@ -1,9 +1,9 @@
 from anthropic import Anthropic
 
 ## From the multi turn conversations lesson
-def api_client_setup():
+def api_client_setup(model = "claude-sonnet-5"):
     client = Anthropic()
-    model = "claude-sonnet-5"
+    model = model
 
     return client, model
 
@@ -23,16 +23,16 @@ def add_assistant_message(messages, text):
     }
     messages.append(assistant_message)
 
-def chat(messages, system = None): 
-    params = { 
+def chat(messages, system = None):
+    params = {
         "model": model,
         "max_tokens": 1000,
-        "messages": messages,
+        "messages": messages
     }
 
-    if system: 
+    if system:
         params["system"] = system
-        
+
     message = client.messages.create(**params)
 
     return message.content[0].text
