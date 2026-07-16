@@ -1,4 +1,5 @@
 from anthropic import Anthropic
+from statistics import mean
 import json
 
 ## From the multi turn conversations lesson
@@ -88,3 +89,114 @@ def generate_dataset():
     answer = chat(messages, output_config = generate_dataset_output_schema)
 
     return json.loads(answer)
+
+def run_prompt(test_case): 
+    # Step 1 - Running the prompt
+    prompt = f"""
+        Please solve the following task:
+
+        {test_case['task']}
+    """
+
+    messages = []
+    add_user_message(messages, prompt)
+
+    # Step 2 (COMPLETED PREVIOUSLY) - Generate the Dataset
+
+    # Step 3 - Feed through Claude
+    output = chat(messages)
+    return output
+
+# Step 4 - Feed Claude Respnose through Grader
+def run_test_case(test_case): 
+    output = run_prompt(test_case)
+    
+    # TODO - Grading 
+    model_grade = grade_by_model(test_case, output)
+    score = model_grade['score']
+    reasoning = model_grade['reasoning']
+
+    return { 
+        'output' : output, 
+        'test_case': test_case,
+        'score': score,
+        'reasoning': reasoning
+    }
+
+def run_eval(dataset):
+    results = []
+
+    for test_case in dataset:
+        result = run_test_case(test_case)
+        results.append(result)
+
+    average_score = mean([result['score'] for result in results])
+    print(average_score)
+
+    return results
+
+def grade_by_model(test_case, output):
+    eval_prompt = f"""
+    You are an expert AWS code reviewer. Your task is to evaluate the following AI-generated solution.
+
+    Original Task:
+    <task>
+    {test_case["task"]}
+    </task>
+
+    Solution to Evaluate:
+    <solution>
+    {output}
+    </solution>
+
+    Output Format
+    Provide your evaluation as a structured JSON object with the following fields, in this specific order:
+    - "strengths": An array of 1-3 key strengths
+    - "weaknesses": An array of 1-3 key areas for improvement
+    - "reasoning": A concise explanation of your overall assessment
+    - "score": A number between 1-10
+
+    Respond with JSON. Keep your response concise and direct.
+    Example response shape:
+    {{
+        "strengths": string[],
+        "weaknesses": string[],
+        "reasoning": string,
+        "score": number
+    }}
+    """
+
+    output_config = {
+        "format": {
+            "type": "json_schema",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "strengths": {
+                        "type": "array",
+                        "items": {"type": "string"}
+                    },
+                    "weaknesses": {
+                        "type": "array",
+                        "items": {"type": "string"}
+                    },
+                    "reasoning": {
+                        "type": "string"
+                    },
+                    "score": {
+                        "type": "number"
+                    }
+                },
+                "required": ["strengths", "weaknesses", "reasoning", "score"],
+                "additionalProperties": False
+            }
+        }
+    }
+
+    messages = []
+
+    add_user_message(messages, eval_prompt)
+
+    eval_text = chat(messages, output_config = output_config)
+
+    return json.loads(eval_text)
