@@ -1,6 +1,8 @@
 from anthropic import Anthropic
 from statistics import mean
 import json
+import ast
+import re
 
 ## From the multi turn conversations lesson
 def api_client_setup(model = "claude-haiku-4-5"):
@@ -54,6 +56,10 @@ generate_dataset_output_schema = {
                     "task": { 
                         "type": "string",
                         "description": "A short natural-language description of the task."
+                    },
+                    "format": { 
+                        "type": "string",
+                        "description": "The format that the test prompt, defined in the task, should aim to test/validate"
                     }
                 },
                 "required": ["task"], 
@@ -74,6 +80,7 @@ def generate_dataset():
     [
         {
             "task": "Description of task",
+            "format": "json" or "python" or "regex"
         },
         ...additional
     ]
@@ -90,12 +97,60 @@ def generate_dataset():
 
     return json.loads(answer)
 
+def build_output_config(code_format):
+    if code_format == "json":
+        content_schema = {
+            "type": "object",
+            "additionalProperties": False
+        }
+    else:
+        content_schema = {
+            "type": "string"
+        }
+
+    return {
+        "format": {
+            "type": "json_schema",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "format": {
+                        "type": "string",
+                        "enum": ["json", "python", "regex"]
+                    },
+                    "content": content_schema
+                },
+                "required": ["format", "content"],
+                "additionalProperties": False
+            }
+        }
+    }
+
+def unwrap_structured_output(output):
+    try:
+        parsed_output = json.loads(output)
+    except json.JSONDecodeError:
+        return output
+
+    if not isinstance(parsed_output, dict) or "content" not in parsed_output:
+        return output
+
+    content = parsed_output["content"]
+
+    if isinstance(content, (dict, list)):
+        return json.dumps(content)
+
+    return content
+
 def run_prompt(test_case): 
     # Step 1 - Running the prompt
     prompt = f"""
         Please solve the following task:
 
         {test_case['task']}
+
+        * Respond only with Python, JSON, or plain regex
+        * Do not add any comments or commentary or explanation
     """
 
     messages = []
@@ -104,8 +159,9 @@ def run_prompt(test_case):
     # Step 2 (COMPLETED PREVIOUSLY) - Generate the Dataset
 
     # Step 3 - Feed through Claude
-    output = chat(messages)
-    return output
+    output_config = build_output_config(test_case["format"])
+    output = chat(messages, output_config = output_config)
+    return unwrap_structured_output(output)
 
 # Step 4 - Feed Claude Respnose through Grader
 def run_test_case(test_case): 
@@ -113,8 +169,11 @@ def run_test_case(test_case):
     
     # TODO - Grading 
     model_grade = grade_by_model(test_case, output)
-    score = model_grade['score']
+    model_score = model_grade['score']
     reasoning = model_grade['reasoning']
+
+    syntax_score = grade_syntax(output, test_case)
+    score = (model_score + syntax_score) / 2
 
     return { 
         'output' : output, 
@@ -134,6 +193,16 @@ def run_eval(dataset):
     print(average_score)
 
     return results
+
+def grade_syntax(response, test_case):
+    format = test_case['format']
+
+    if format == 'json':
+        return validate_json(response)
+    if format == 'python': 
+        return validate_python(response)
+    if format == 'regex':
+        return validate_regex(response)
 
 def grade_by_model(test_case, output):
     eval_prompt = f"""
@@ -200,3 +269,24 @@ def grade_by_model(test_case, output):
     eval_text = chat(messages, output_config = output_config)
 
     return json.loads(eval_text)
+
+def validate_json(text):
+    try:
+        json.loads(text.strip())
+        return 10
+    except json.JSONDecodeError: 
+        return 0
+
+def validate_python(text):
+    try: 
+        ast.parse(text.strip())
+        return 10
+    except SyntaxError:
+        return 0
+
+def validate_regex(text):
+    try: 
+        re.compile(text.strip())
+        return 10
+    except re.error:
+        return 0

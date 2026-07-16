@@ -1,11 +1,14 @@
 [
   {
-    "task": "Write a Python function that validates an AWS IAM role ARN and returns True if it matches the correct format, False otherwise"
+    "task": "Extract all AWS S3 bucket names from a CloudFormation template string using a pattern that matches bucket resource names",
+    "format": "regex"
   },
   {
-    "task": "Create a JSON object that represents an AWS S3 bucket policy allowing read-only access to objects with a specific prefix for authenticated users"
+    "task": "Create a JSON configuration object for an AWS Lambda function that includes environment variables, memory allocation, and timeout settings",
+    "format": "json"
   },
   {
-    "task": "Write a regular expression pattern that matches valid AWS EC2 instance IDs in the format i-xxxxxxxxx where x is a hexadecimal character"
+    "task": "Write a Python function that parses an AWS IAM policy document and returns a list of all allowed actions",
+    "format": "python"
   }
 ]
