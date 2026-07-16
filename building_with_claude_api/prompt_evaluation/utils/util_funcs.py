@@ -60,6 +60,10 @@ generate_dataset_output_schema = {
                     "format": { 
                         "type": "string",
                         "description": "The format that the test prompt, defined in the task, should aim to test/validate"
+                    },
+                    "solution_criteria": { 
+                        "type": "string", 
+                        "description": "Prefacing the criteria with 'Must include', a list of features that the output response should include"
                     }
                 },
                 "required": ["task"], 
@@ -80,7 +84,8 @@ def generate_dataset():
     [
         {
             "task": "Description of task",
-            "format": "json" or "python" or "regex"
+            "format": "json" or "python" or "regex",
+            "solution_criteria": "Define the criteria of what the solution should include, based on the task description"
         },
         ...additional
     ]
@@ -166,9 +171,9 @@ def run_prompt(test_case):
 # Step 4 - Feed Claude Respnose through Grader
 def run_test_case(test_case): 
     output = run_prompt(test_case)
+    solution_criteria = test_case['solution_criteria']
     
-    # TODO - Grading 
-    model_grade = grade_by_model(test_case, output)
+    model_grade = grade_by_model(test_case, output, solution_criteria = solution_criteria)
     model_score = model_grade['score']
     reasoning = model_grade['reasoning']
 
@@ -204,7 +209,7 @@ def grade_syntax(response, test_case):
     if format == 'regex':
         return validate_regex(response)
 
-def grade_by_model(test_case, output):
+def grade_by_model(test_case, output, solution_criteria):
     eval_prompt = f"""
     You are an expert AWS code reviewer. Your task is to evaluate the following AI-generated solution.
 
@@ -217,6 +222,11 @@ def grade_by_model(test_case, output):
     <solution>
     {output}
     </solution>
+
+    Criteria that should be used to evaluate the solution
+    <solution-criteria>
+    {solution_criteria}
+    </solution-criteria>
 
     Output Format
     Provide your evaluation as a structured JSON object with the following fields, in this specific order:

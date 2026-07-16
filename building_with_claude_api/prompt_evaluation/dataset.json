@@ -1,14 +1,17 @@
 [
   {
-    "task": "Extract all AWS S3 bucket names from a CloudFormation template string using a pattern that matches bucket resource names",
-    "format": "regex"
+    "task": "Parse an AWS S3 bucket name and object key from an S3 URI",
+    "format": "regex",
+    "solution_criteria": "Must include a regex pattern that captures the bucket name and object key from URIs in the format s3://bucket-name/path/to/object"
   },
   {
-    "task": "Create a JSON configuration object for an AWS Lambda function that includes environment variables, memory allocation, and timeout settings",
-    "format": "json"
+    "task": "Create a JSON configuration object for an AWS Lambda function that specifies runtime, memory, timeout, and environment variables",
+    "format": "json",
+    "solution_criteria": "Must include valid JSON structure with properties for runtime (python3.11), memory (128-10240 MB range), timeout in seconds, and an environment variables object"
   },
   {
-    "task": "Write a Python function that parses an AWS IAM policy document and returns a list of all allowed actions",
-    "format": "python"
+    "task": "Write a Python function to validate AWS IAM role ARN format and extract the role name",
+    "format": "python",
+    "solution_criteria": "Must include a function that validates ARN format using regex or string parsing, extracts and returns the role name, and handles invalid ARN inputs"
   }
 ]
