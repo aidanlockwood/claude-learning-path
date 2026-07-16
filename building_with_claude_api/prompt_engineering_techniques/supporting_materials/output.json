@@ -1,0 +1,23 @@
+[
+  {
+    "output": "# One-Day Marathon Training Meal Plan\n**Vegetarian | Nut-Free | 20km Long Run (Afternoon)**\n\n---\n\n## Daily Targets\n- **Calories:** 3,200 kcal\n- **Protein:** 110g (13.7%)\n- **Carbohydrates:** 480g (60%)\n- **Fat:** 75g (21%)\n\n---\n\n## BREAKFAST (6:00 AM) | 650 kcal\n*2 hours before training prep*\n\n- Oatmeal: 80g dry\n- Banana: 150g\n- Whole milk: 250ml\n- Honey: 15g\n- Ground flaxseed: 10g\n\n**Macros:** Carbs 95g | Protein 15g | Fat 12g\n\n---\n\n## MID-MORNING SNACK (9:00 AM) | 400 kcal\n*3 hours before long run*\n\n- White bread: 2 slices (60g)\n- Peanut butter alternative (sunflower seed butter): 20g\n- Jam: 20g\n- Orange juice: 300ml\n\n**Macros:** Carbs 75g | Protein 8g | Fat 8g\n\n---\n\n## PRE-RUN SNACK (1:00 PM) | 250 kcal\n*30-45 minutes before 2:00 PM run start*\n\n- Banana: 150g\n- White rice cakes: 2 (25g)\n- Honey: 10g\n- Water: 500ml\n\n**Macros:** Carbs 62g | Protein 2g | Fat 0.5g\n\n---\n\n## DURING LONG RUN (2:00-3:20 PM) | 300 kcal\n*Every 45 minutes*\n\n- Energy drink (6% carbs): 500ml\n- Banana: 100g (at km 10)\n- Sports energy gel: 1 pack (40g)\n\n**Macros:** Carbs 65g | Protein 2g | Fat 0g\n\n---\n\n## POST-RUN RECOVERY (3:30 PM) | 550 kcal\n*Within 30 minutes of finish*\n\n- Low-fat chocolate milk: 500ml\n- White bread: 2 slices (60g)\n- Honey: 15g\n- Banana: 100g\n\n**Macros:** Carbs 105g | Protein 18g | Fat 8g\n\n---\n\n## DINNER (7:00 PM) | 450 kcal\n*Balanced recovery meal*\n\n- Lentil pasta (cooked): 200g\n- Marinara sauce: 150g\n- Olive oil: 10ml\n- Parmesan cheese: 20g\n- Mixed vegetables (zucchini, tomato): 150g\n\n**Macros:** Carbs 78g | Protein 20g | Fat 15g\n\n---\n\n## EVENING SNACK (9:30 PM) | Optional 200 kcal\n*If hungry*\n\n- Greek yogurt (low-fat): 200g\n- Granola (nut-free): 40g\n- Blueberries: 80g\n\n**Macros:** Carbs 30g | Protein 15g | Fat 3g\n\n---\n\n## Hydration Schedule\n- **Pre-run (6:00 AM-2:00 PM):** 1.5L water + electrolytes\n- **During run:** 500ml per hour\n- **Post-run:** 750ml within 2 hours\n- **Throughout day:** 1.5L additional water\n\n---\n\n## Key Nutrition Strategy\n\u2713 **High carbs (60%)** fuel marathon training  \n\u2713 **Timed carbs** before, during, and after run  \n\u2713 **Adequate protein** (110g) supports recovery  \n\u2713 **No nuts** maintained throughout  \n\u2713 **Budget-friendly** pantry staples used  \n\u2713 **Digestible pre-run foods** minimize GI distress",
+    "test_case": {
+      "prompt_inputs": {
+        "height": "178 cm",
+        "weight": "68 kg",
+        "goal": "Marathon training with a 20km long run scheduled for afternoon; maximize carbohydrate intake and optimize pre/during/post-workout nutrition",
+        "restrictions": "Vegetarian, no nuts"
+      },
+      "solution_criteria": [
+        "Meal plan covers all three meals plus pre/during/post-workout nutrition timed appropriately around the afternoon long run",
+        "Total daily carbohydrates are sufficient for endurance training (approximately 8-10g per kg body weight)",
+        "All meals and snacks are vegetarian and nut-free",
+        "Plan is concise and presented in a single-day format without excessive detail"
+      ],
+      "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+      "scenario": "Testing with a professional endurance athlete (marathon runner) requiring high carbohydrate intake and specific timing around a long training session"
+    },
+    "score": 7,
+    "reasoning": "The solution comprehensively meets all three mandatory requirements with clear presentation of daily totals, macronutrient percentages, and detailed meal timing. The workout nutrition strategy is well-structured and appropriately timed around the afternoon long run. However, the carbohydrate intake at 480g (7.06g/kg) falls short of the 8-10g/kg criterion specified for endurance training, representing a meaningful deficiency in meeting secondary criteria. The run duration assumption also appears conservative. Despite these issues, the solution is well-organized, vegetarian/nut-free compliant, and provides practical guidance."
+  }
+]
