@@ -43,7 +43,16 @@ def chat(messages, system = None, stream = False, output_config = None):
 
     message = client.messages.create(**params)
 
-    return message.content[0].text
+    text_blocks = [
+        block.text
+        for block in message.content
+        if hasattr(block, "text") and block.text
+    ]
+
+    if text_blocks:
+        return "".join(text_blocks)
+
+    raise ValueError("Model response did not include any text content")
 
 generate_dataset_output_schema = { 
     "format": { 
