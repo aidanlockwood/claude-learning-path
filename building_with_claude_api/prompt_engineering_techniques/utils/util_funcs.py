@@ -2,7 +2,9 @@ from anthropic import Anthropic
 
 ## From the multi turn conversations lesson
 def api_client_setup(model = "claude-haiku-4-5"):
-    client = Anthropic()
+    client = Anthropic(
+        max_retries = 5
+    )
     model = model
 
     return client, model

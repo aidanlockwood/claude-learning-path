@@ -1,0 +1,52 @@
+[
+  {
+    "prompt_inputs": {
+      "content": "Recent studies demonstrate the complex interplay between agricultural productivity and socioeconomic outcomes in developing nations. The adoption of genetically modified crop varieties has increased yields by 23% in sub-Saharan Africa, reducing food insecurity among smallholder farmers. However, this technological advancement has created market concentration issues, with seed corporations controlling 67% of the market, leading to concerns about farmer autonomy and long-term sustainability. Simultaneously, policy interventions such as subsidized credit programs and land tenure reforms have shown promise in improving household income while promoting environmental stewardship through reduced pesticide use. The intersection of biotechnology innovation, market economics, and agricultural policy reveals critical trade-offs between short-term productivity gains and equitable resource distribution."
+    },
+    "solution_criteria": [
+      "Extracts all distinct subject areas: biotechnology/genetics, agricultural economics, market concentration, policy/governance, and food security",
+      "Separates interdisciplinary topics into their core subject domains without conflating overlapping areas",
+      "Returns output as a valid JSON array of strings"
+    ],
+    "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON Array of strings\n    ",
+    "scenario": "Testing with interdisciplinary passage containing mixed topics from biology, economics, and social policy to verify accurate identification and separation of distinct subject areas"
+  },
+  {
+    "prompt_inputs": {
+      "content": "Recent advances in topological quantum computing leverage non-abelian anyons confined within two-dimensional electron gas systems to implement fault-tolerant quantum gates. The Majorana fermion braiding operations in nanowire architectures coupled to superconducting proximity effects enable topological protection against decoherence mechanisms. Furthermore, the measurement of the topological invariant through Chern number calculations in Hofstadter butterfly spectra reveals the robustness of edge states against disorder. Simultaneously, the implementation of topological error correction codes utilizing surface codes and toric codes demonstrates exponential suppression of logical error rates as the physical qubit number increases, providing a pathway toward scalable quantum computation beyond the limitations of conventional superconducting qubits."
+    },
+    "solution_criteria": [
+      "Extracts distinct technical topics including topological quantum computing, Majorana fermions, topological protection, and quantum error correction",
+      "Captures domain-specific terminology clusters appropriately without over-fragmenting related concepts",
+      "Returns valid JSON array format with string elements"
+    ],
+    "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON Array of strings\n    ",
+    "scenario": "Testing with a densely technical passage from a single field (e.g., quantum physics) that uses specialized jargon to ensure the prompt handles domain-specific terminology and extracts coherent topic clusters"
+  },
+  {
+    "prompt_inputs": {
+      "content": "Recent advances in machine learning have demonstrated surprising effectiveness in natural language processing tasks, yet the underlying mechanisms remain poorly understood. We examine how transformer architectures process semantic information through attention mechanisms, while simultaneously investigating whether these models develop linguistic competence comparable to human language understanding. Our analysis reveals connections between statistical pattern recognition and grammatical structure acquisition, raising fundamental questions about the nature of artificial versus biological cognition and the validity of current evaluation metrics for assessing language comprehension in neural systems."
+    },
+    "solution_criteria": [
+      "Extracts all major subject areas addressed in the passage without omitting key topics",
+      "Handles overlapping concepts appropriately (e.g., does not duplicate or fragment closely related topics)",
+      "Returns output as a valid JSON array of strings",
+      "Topics are specific enough to be meaningful rather than overly broad or vague"
+    ],
+    "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON Array of strings\n    ",
+    "scenario": "Testing with a short, ambiguous passage that could yield multiple valid topic interpretations to evaluate whether the prompt produces reasonable outputs despite overlapping or unclear subject matter"
+  },
+  {
+    "prompt_inputs": {
+      "content": "The study examined how bacterial biofilms develop resistance mechanisms through horizontal gene transfer in clinical settings. Patients with chronic wounds showed significantly delayed healing when biofilm-forming Pseudomonas aeruginosa was present, correlating with increased expression of virulence factors and reduced antibiotic penetration. These findings suggest that the polymeric matrix serves not merely as a physical barrier but as a sophisticated communication network, enabling coordinated pathogenic responses. Furthermore, the observation that biofilm-associated bacteria exhibited phenotypic heterogeneity implies an adaptive strategy for population survival under hostile conditions, though the precise regulatory pathways remain poorly understood."
+    },
+    "solution_criteria": [
+      "Extracts explicit topics directly stated in the passage (e.g., bacterial biofilms, antibiotic resistance, horizontal gene transfer)",
+      "Identifies implicit underlying themes that must be inferred from context (e.g., clinical pathogenesis, bacterial communication, adaptive survival strategies)",
+      "Returns output as a valid JSON array of strings with no duplicates",
+      "Avoids including overly broad or vague terms that lack substantive connection to the passage content"
+    ],
+    "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON Array of strings\n    ",
+    "scenario": "Testing with a passage containing implicit versus explicit topics to assess whether the prompt captures both directly stated topics and underlying themes that must be inferred from context"
+  }
+]
