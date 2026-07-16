@@ -1,7 +1,7 @@
 from anthropic import Anthropic
 
 ## From the multi turn conversations lesson
-def api_client_setup(model = "claude-sonnet-5"):
+def api_client_setup(model = "claude-haiku-4-5"):
     client = Anthropic()
     model = model
 
@@ -23,11 +23,13 @@ def add_assistant_message(messages, text):
     }
     messages.append(assistant_message)
 
-def chat(messages, system = None, stream = False, output_config = None):
+def chat(messages, system = None, stream = False, output_config = None, temperature=1.0, stop_sequences=[]):
     params = {
         "model": model,
         "max_tokens": 1000,
         "messages": messages,
+        "temperature": temperature,
+        "stop_sequences": stop_sequences,
         "stream": stream
     }
 

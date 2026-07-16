@@ -1,85 +1,82 @@
 [
   {
     "prompt_inputs": {
-      "height": "178",
-      "weight": "64",
-      "goal": "High-carb fueling plan for marathon training with a pre-dawn training session",
-      "restrictions": "Vegetarian"
+      "height": "178 cm",
+      "weight": "68 kg",
+      "goal": "Marathon training - high-endurance athlete requiring 4000+ calories with carbohydrate and hydration focus",
+      "restrictions": "None"
     },
     "solution_criteria": [
-      "Plan is limited to a single day and stays compact/concise (not overly long)",
-      "Includes a pre-training meal or snack timed appropriately before the pre-dawn session",
-      "Overall meal plan is carbohydrate-heavy, suitable for endurance marathon fueling",
-      "All meals and snacks are strictly vegetarian (no meat or fish)",
-      "Covers a full day of eating (includes at least breakfast, lunch, dinner, and a snack)"
+      "Meal plan totals 4000+ calories with carbohydrates comprising 55-65% of total calories",
+      "Includes 3 main meals and 2-3 snacks distributed throughout the day",
+      "Contains specific hydration strategy with water and electrolyte recommendations",
+      "Presented in compact, easy-to-read format suitable for a single day"
     ],
     "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
-    "scenario": "Endurance marathon runner needing high-carb fueling plan with pre-dawn training session and vegetarian dietary restriction"
+    "scenario": "Testing with a high-endurance athlete (marathon runner) requiring 4000+ calories with emphasis on carbohydrates and hydration strategies"
+  },
+  {
+    "prompt_inputs": {
+      "height": "180 cm",
+      "weight": "90 kg",
+      "goal": "Build muscle and strength through powerlifting training with high protein intake",
+      "restrictions": "None"
+    },
+    "solution_criteria": [
+      "Meal plan contains at least 200g of protein distributed across all meals",
+      "Includes pre-workout and post-workout meals with appropriate timing and macronutrient composition",
+      "Plan is compact and concise (fits within 1 day format with 4-5 meals maximum)",
+      "All meals are realistic and practical for a single athlete to prepare"
+    ],
+    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with a strength/power athlete (weightlifter) needing high protein intake (200g+) with specific meal timing around workouts"
+  },
+  {
+    "prompt_inputs": {
+      "height": "178 cm",
+      "weight": "71 kg",
+      "goal": "Maintain weight at 70 kg for lightweight boxing division while maximizing energy and strength for training",
+      "restrictions": "No dairy due to lactose intolerance"
+    },
+    "solution_criteria": [
+      "Meal plan totals approximately 2,100-2,300 calories to support gradual 1 kg weight loss while maintaining performance",
+      "Includes 4-5 meals distributed throughout the day with balanced macronutrients (protein-focused for muscle retention)",
+      "All meals are dairy-free and practical for an athlete's training schedule",
+      "Plan is presented in compact, easy-to-follow 1-day format with meal times and portion sizes"
+    ],
+    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with a sport with strict weight class requirements (boxer/wrestler) needing calorie control while maintaining performance and energy"
   },
   {
     "prompt_inputs": {
       "height": "178",
-      "weight": "83",
-      "goal": "Cut body fat while preserving strength and lean muscle mass for upcoming powerlifting competition weigh-in",
-      "restrictions": "Lactose intolerant; daily calorie ceiling of 2200 kcal; high-protein, moderate-carb, low-fat macro split"
+      "weight": "72",
+      "goal": "endurance training recovery",
+      "restrictions": "vegan"
     },
     "solution_criteria": [
-      "Provides a full 1-day meal plan (breakfast, lunch, dinner, and at least one snack) with no meal exceeding practical prep complexity",
-      "Total daily calories stay at or under the 2200 kcal ceiling",
-      "Meals are clearly high-protein and moderate-carb, with approximate macro breakdown (protein/carbs/fat) provided for the day or per meal",
-      "All listed foods are free of lactose/dairy-based lactose sources (or explicitly lactose-free alternatives are used)",
-      "Plan is concise and compact, not excessively long or verbose"
+      "All meals are 100% plant-based with no animal products",
+      "Includes adequate plant-based protein sources at each meal (legumes, tofu, nuts, seeds)",
+      "Covers essential micronutrients for athletes (iron, B12, calcium, zinc) through food sources or notes supplementation",
+      "Provides a realistic 1-day meal plan with breakfast, lunch, dinner, and snacks"
     ],
     "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
-    "scenario": "Competitive powerlifter on a cutting phase requiring high-protein, moderate-carb meals with strict calorie ceiling and lactose intolerance"
+    "scenario": "Testing with dietary restrictions: vegan athlete requiring plant-based protein sources and micronutrient optimization"
   },
   {
     "prompt_inputs": {
-      "height": "173",
-      "weight": "62",
-      "goal": "Fuel two-a-day swim practices while maintaining weight and supporting muscle recovery",
-      "restrictions": "Nut allergy (no peanuts or tree nuts); budget-friendly ingredients; kid-friendly meals a teenager will actually eat"
+      "height": "178 cm",
+      "weight": "75 kg",
+      "goal": "endurance training with muscle maintenance",
+      "restrictions": "vegetarian, no nuts or tree nuts"
     },
     "solution_criteria": [
-      "Provides a full 1-day meal plan (breakfast, lunch, dinner, and snacks) sized appropriately for two-a-day swim training",
-      "All meals and snacks are free of peanuts and tree nuts, with no substitutions relying on nut-based products",
-      "Uses simple, inexpensive, widely available ingredients suitable for a teenage athlete's taste (e.g., no exotic or costly items)",
-      "Plan is concise and compact, not overly long or complex to prepare"
+      "Meal plan covers all 3 meals using budget-friendly whole foods (rice, beans, eggs, seasonal vegetables, oats)",
+      "Total prep time across all meals does not exceed 45 minutes",
+      "Meets estimated daily caloric needs for a 75kg endurance athlete (approximately 2400-2800 calories)",
+      "All meals comply with vegetarian and nut-free restrictions"
     ],
     "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
-    "scenario": "Teenage swimmer with two-a-day practices needing kid-friendly meals, nut allergy accommodation, and budget-conscious ingredients"
-  },
-  {
-    "prompt_inputs": {
-      "height": "180",
-      "weight": "68",
-      "goal": "Rapid glycogen replenishment and sustained energy for back-to-back race stages during a multi-day cycling tour",
-      "restrictions": "Gluten-free; all meals must be portable/eaten on-the-go between stages"
-    },
-    "solution_criteria": [
-      "Provides a full 1-day meal plan (breakfast, lunch/on-bike snacks, dinner, plus recovery snack) sized appropriately for the athlete's weight and endurance goal",
-      "All meals and snacks are explicitly gluten-free",
-      "Meals are described as portable or easy to eat on-the-go, suitable for consumption between or during race stages",
-      "Emphasizes high-carbohydrate, fast-glycogen-replenishing food choices, especially immediately post-stage",
-      "Output is compact and concise, not overly long-winded"
-    ],
-    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
-    "scenario": "Professional cyclist during a multi-day race requiring rapid glycogen replenishment, gluten-free options, and meals eaten on-the-go between stages"
-  },
-  {
-    "prompt_inputs": {
-      "height": "178",
-      "weight": "84",
-      "goal": "Cut weight to make 77kg competition limit in 5 days while maintaining muscle and energy for training",
-      "restrictions": "Low-sodium diet; eating window restricted to 12pm-8pm (intermittent fasting); no processed or packaged foods"
-    },
-    "solution_criteria": [
-      "Provides a full 1-day meal plan with specific meals/snacks and portion sizes (e.g., grams or oz) that fit within the 12pm-8pm eating window",
-      "Meals reflect low-sodium choices with no processed/packaged foods",
-      "Plan is concise and compact, not excessively long or verbose",
-      "Content is appropriate for a weight-cutting athlete (controlled portions, supports the stated goal)"
-    ],
-    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
-    "scenario": "Combat sport athlete (MMA) making weight for competition needing low-sodium, controlled-portion meals with intermittent fasting window constraints"
+    "scenario": "Testing with minimal budget constraints: athlete needing economical, accessible whole foods with practical prep time limitations"
   }
 ]

@@ -7,67 +7,10 @@ import time
 
 from utils.util_funcs import *
 
+# PromptEvaluator Implementation
 class PromptEvaluator:
-    def __init__(self, max_concurrent_tasks=1):
+    def __init__(self, max_concurrent_tasks=3):
         self.max_concurrent_tasks = max_concurrent_tasks
-
-    def _build_output_config(self, schema):
-        return {
-            "format": {
-                "type": "json_schema",
-                "schema": schema,
-            }
-        }
-
-    def _parse_json_response(self, text):
-        """Parse JSON returned by the model, tolerating fenced blocks."""
-        candidates = [text.strip()]
-
-        fenced_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", text, re.IGNORECASE)
-        if fenced_match:
-            candidates.insert(0, fenced_match.group(1).strip())
-
-        for candidate in candidates:
-            try:
-                return json.loads(candidate)
-            except json.JSONDecodeError:
-                decoder = json.JSONDecoder()
-                for start in [i for i, ch in enumerate(candidate) if ch in "{["]:
-                    try:
-                        parsed, end = decoder.raw_decode(candidate, idx=start)
-                    except json.JSONDecodeError:
-                        continue
-
-                    remainder = candidate[end:].strip()
-                    if not remainder:
-                        return parsed
-
-        preview = text.strip()[:200]
-        raise json.JSONDecodeError(
-            f"Could not parse JSON response. Preview: {preview!r}",
-            text,
-            0,
-        )
-
-    def _call_model(self, messages, system=None, output_config=None, retries=2):
-        """Call Claude and retry transient empty/invalid responses."""
-        last_error = None
-
-        for attempt in range(retries + 1):
-            try:
-                return chat(
-                    messages,
-                    system=system,
-                    output_config=output_config,
-                )
-            except (ValueError, json.JSONDecodeError) as error:
-                last_error = error
-                if attempt < retries:
-                    time.sleep(0.5 * (attempt + 1))
-                    continue
-                break
-
-        raise last_error
 
     def render(self, template_string, variables):
         placeholders = re.findall(r"{([^{}]+)}", template_string)
@@ -139,28 +82,15 @@ class PromptEvaluator:
 
         messages = []
         add_user_message(messages, rendered_prompt)
-        output_config = self._build_output_config(
-            {
-                "type": "object",
-                "properties": {
-                    "ideas": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                        },
-                    }
-                },
-                "required": ["ideas"],
-                "additionalProperties": False,
-            }
+        add_assistant_message(messages, "```json")
+        text = chat(
+            messages,
+            stop_sequences=["```"],
+            system=system_prompt,
+            temperature=1.0,
         )
-        text = self._call_model(messages, system=system_prompt, output_config=output_config)
 
-        parsed = self._parse_json_response(text)
-        if isinstance(parsed, dict) and "ideas" in parsed:
-            return parsed["ideas"]
-
-        return parsed
+        return json.loads(text)
 
     def generate_test_case(self, task_description, idea, prompt_inputs_spec={}):
         """Generate a single test case based on the task description and a specific idea"""
@@ -253,36 +183,15 @@ class PromptEvaluator:
 
         messages = []
         add_user_message(messages, rendered_prompt)
-        prompt_input_properties = {
-            key: {
-                "type": "string",
-            }
-            for key in prompt_inputs_spec.keys()
-        }
-        output_config = self._build_output_config(
-            {
-                "type": "object",
-                "properties": {
-                    "prompt_inputs": {
-                        "type": "object",
-                        "properties": prompt_input_properties,
-                        "required": list(prompt_inputs_spec.keys()),
-                        "additionalProperties": False,
-                    },
-                    "solution_criteria": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                        },
-                    },
-                },
-                "required": ["prompt_inputs", "solution_criteria"],
-                "additionalProperties": False,
-            }
+        add_assistant_message(messages, "```json")
+        text = chat(
+            messages,
+            stop_sequences=["```"],
+            system=system_prompt,
+            temperature=0.7,
         )
-        text = self._call_model(messages, system=system_prompt, output_config=output_config)
 
-        test_case = self._parse_json_response(text)
+        test_case = json.loads(text)
         test_case["task_description"] = task_description
         test_case["scenario"] = idea
 
@@ -427,58 +336,28 @@ class PromptEvaluator:
 
         messages = []
         add_user_message(messages, eval_prompt)
-        output_config = self._build_output_config(
-            {
-                "type": "object",
-                "properties": {
-                    "strengths": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                        },
-                    },
-                    "weaknesses": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                        },
-                    },
-                    "reasoning": {
-                        "type": "string",
-                    },
-                    "score": {
-                        "type": "number",
-                    },
-                },
-                "required": ["strengths", "weaknesses", "reasoning", "score"],
-                "additionalProperties": False,
-            }
+        add_assistant_message(messages, "```json")
+        eval_text = chat(
+            messages,
+            stop_sequences=["```"],
+            temperature=0.0,
         )
-        eval_text = self._call_model(messages, output_config=output_config)
-        return self._parse_json_response(eval_text)
+        return json.loads(eval_text)
 
     def run_test_case(self, test_case, run_prompt_function, extra_criteria=None):
         """Run a test case and grade the result"""
-        try:
-            output = run_prompt_function(test_case["prompt_inputs"])
-            model_grade = self.grade_output(test_case, output, extra_criteria)
-            model_score = model_grade["score"]
-            reasoning = model_grade["reasoning"]
+        output = run_prompt_function(test_case["prompt_inputs"])
 
-            return {
-                "output": output,
-                "test_case": test_case,
-                "score": model_score,
-                "reasoning": reasoning,
-            }
-        except Exception as error:
-            return {
-                "output": "",
-                "test_case": test_case,
-                "score": 0,
-                "reasoning": f"Error during evaluation: {error}",
-                "error": str(error),
-            }
+        model_grade = self.grade_output(test_case, output, extra_criteria)
+        model_score = model_grade["score"]
+        reasoning = model_grade["reasoning"]
+
+        return {
+            "output": output,
+            "test_case": test_case,
+            "score": model_score,
+            "reasoning": reasoning,
+        }
 
     def run_evaluation(
         self,
@@ -533,7 +412,7 @@ class PromptEvaluator:
 
         return results
     
-    # Report Builder
+# Report Builder
 def generate_prompt_evaluation_report(evaluation_results):
     total_tests = len(evaluation_results)
     scores = [result["score"] for result in evaluation_results]
