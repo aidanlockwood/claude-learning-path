@@ -113,11 +113,11 @@
             <div class="summary-stats">
                 <div class="stat-box">
                     <div>Total Test Cases</div>
-                    <div class="stat-value">10</div>
+                    <div class="stat-value">5</div>
                 </div>
                 <div class="stat-box">
                     <div>Average Score</div>
-                    <div class="stat-value">2.6 / 10</div>
+                    <div class="stat-value">1.2 / 10</div>
                 </div>
                 <div class="stat-box">
                     <div>Pass Rate (≥7)</div>
@@ -140,540 +140,171 @@
             <tbody>
     
             <tr>
-                <td>Endurance marathon runner needing high-carb fueling plan for a long training day</td>
-                <td class="prompt-inputs"><strong>height:</strong> 178<br><strong>weight:</strong> 65<br><strong>goal:</strong> High-carb fueling plan for a long marathon training day (20 miles)<br><strong>restrictions:</strong> Lactose intolerant</td>
-                <td class="criteria">• Plan is for a single day and includes distinct meals/snacks (breakfast, pre-run, during-run, post-run, dinner)<br>• Carbohydrate-heavy food choices are emphasized throughout, appropriate for endurance fueling<br>• No dairy/lactose-containing foods are included, or lactose-free alternatives are used<br>• Output is compact and concise, not overly long-winded</td>
-                <td class="output"><pre># Marathon Training Day Fueling Plan (20 Miles)
-**Stats:** 178cm, 65kg | Lactose intolerant | Goal: High-carb fueling
-
-Your BMI puts you in a lean, efficient range—great for endurance, but it means glycogen depletion happens fast on 20-milers. Here's a full-day carb-loading and fueling strategy.
-
-## Pre-Run (Night Before)
-Carb-load with easily digestible, low-fat foods:
-- Large pasta or rice bowl (white rice/pasta digests faster than whole grain—save fiber for non-running days)
-- Lean protein (chicken, tofu)
-- Cooked vegetables (avoid excess raw fiber before long runs)
-- Avoid dairy-based sauces (alfredo, cream sauces)
-
-## Morning Of (2-3 hrs before)
-- Oatmeal (made with lactose-free milk or almond/oat milk) + banana + honey
-- OR white toast + peanut butter + banana
-- Coffee if you're used to it (aids performance, but watch GI effects)
-
-## During the Run (20 miles)
-This is where carb intake really matters—aim for **60-90g carbs/hour**:
-- Sports drinks (Gatorade, Skratch, Tailwind—typically dairy-free, check labels)
-- Energy gels (GU, Maurten, Honey Stinger—verify lactose-free, most are)
-- Dried fruit, dates, or banana at aid stations
-- Electrolyte tabs if sweating heavily
-
-## Post-Run Recovery (within 30-60 min)
-- 3:1 or 4:1 carb-to-protein ratio is ideal:
-  - Lactose-free chocolate milk or protein shake with lactose-free/plant milk
-  - Rice cakes + honey + a banana
-  - White bagel with turkey or nut butter
-
-## Rest of Day
-- Continue replenishing glycogen: potatoes, rice, fruit
-- Lactose-free yogurt or dairy-free kefir for gut health
-- Hydrate well—add electrolytes if it was hot/humid
-
-**Quick lactose-free swaps:** almond/oat/soy milk, lactose-free milk (Lactaid), dairy-free protein powder, coconut yogurt.
-
-Want me to build this into a specific meal-by-meal timeline with quantities based on your weight?</pre></td>
-                <td class="score-col"><span class="score score-low">2</span></td>
-                <td class="reasoning">The solution fails multiple mandatory requirements. It does not include a daily caloric total at all. It does not include a macronutrient breakdown (grams/percentages of carbs, protein, fat) - only a generic ratio suggestion for post-run recovery, which is not a full macro breakdown. Additionally, exact portions/quantities are missing for virtually all foods (e.g., 'banana', 'oatmeal', 'rice cakes' with no gram/cup measurements), and timing is often relative/vague rather than precise (e.g., 'morning of (2-3 hrs before)' without clock times). Per the grading instructions, any violation of a mandatory requirement caps the score at 3 or lower, and here there are three separate violations (calories, macros, exact portions/timing).</td>
-            </tr>
-        
-            <tr>
-                <td>Competitive bodybuilder in cutting phase requiring high-protein, low-calorie meal plan</td>
-                <td class="prompt-inputs"><strong>height:</strong> 178<br><strong>weight:</strong> 84<br><strong>goal:</strong> Cutting phase for upcoming bodybuilding competition - maximize fat loss while preserving lean muscle mass, targeting approximately 2000 calories per day with very high protein intake<br><strong>restrictions:</strong> No dairy, no added sugar</td>
-                <td class="criteria">• Presents a single day's meal plan with clearly defined meals (e.g., breakfast, lunch, dinner, snacks)<br>• Total daily calories are roughly around 2000 kcal<br>• Protein content is emphasized and high across meals (collectively totaling roughly 1.5-2g per kg of bodyweight)<br>• Plan contains no dairy or added sugar ingredients<br>• Output is compact and concise rather than overly long or verbose</td>
-                <td class="output"><pre># Cutting Phase Nutrition Plan — 2000 kcal/day
-
-**Stats:** 178cm, 84kg | Goal: Fat loss, muscle preservation | No dairy, no added sugar
-
-## Macro Breakdown
-
-For aggressive muscle preservation during a cut, I'll prioritize protein heavily:
-
-| Macro | Grams | Calories | % of Total |
-|-------|-------|----------|------------|
-| **Protein** | 220g (2.6g/kg) | 880 kcal | 44% |
-| **Carbs** | 150g | 600 kcal | 30% |
-| **Fat** | 58g | 520 kcal | 26% |
-| **Total** | | **2000 kcal** | |
-
-*Protein is set high (2.6g/kg bodyweight) since this is standard practice for competition prep — helps preserve muscle in a significant deficit and has high satiety.*
-
----
-
-## Sample Meal Plan
-
-**Meal 1 (Breakfast) — ~450 kcal**
-- 6 egg whites + 2 whole eggs, scrambled
-- 60g dry oats (cooked in water)
-- Handful of berries
-
-**Meal 2 (Lunch) — ~500 kcal**
-- 200g chicken breast, grilled
-- 150g white rice
-- Large portion mixed vegetables (broccoli, peppers, spinach)
-- 1 tsp olive oil for cooking
-
-**Meal 3 (Pre/Post-Workout) — ~400 kcal**
-- Whey protein isolate shake (dairy-free/lactose-free isolate or plant-based protein — pea/rice blend), 1-2 scoops
-- 1 banana or 40g rice cakes
-
-**Meal 4 (Dinner) — ~500 kcal**
-- 200g lean white fish (cod, tilapia) or 95% lean ground beef/turkey
-- 200g sweet potato
-- Asparagus or green beans
-- 1 tsp coconut oil or avocado (for fats)
-
-**Meal 5 (Optional/Evening) — ~150 kcal**
-- Casein alternative: 30g protein isolate mixed with water, or
-- 100g Greek yogurt substitute (coconut yogurt, unsweetened) if tolerated... *(note: check ingredients — some contain hidden sugars)*
-
----
-
-## Key Food Sources
-
-**Protein:** Chicken breast, turkey, lean beef (93-95%), white fish, egg whites, whey/plant protein isolate (dairy-free)
-
-**Carbs:** Oats, white/brown rice, sweet potato, rice cakes, fruit (berries, banana)
-
-**Fats:** Olive oil, avocado, nuts (small amounts), fatty fish (salmon 1-2x/week for omega-3s)
-
-**Vegetables (mostly free foods):** Broccoli, spinach, asparagus, peppers, zucchini — high volume for satiety at low calorie cost
-
----
-
-## Practical Notes
-
-1. **Sodium/</pre></td>
-                <td class="score-col"><span class="score score-medium">6</span></td>
-                <td class="reasoning">The solution meets the mandatory requirements: it includes a daily caloric total (2000 kcal), a macronutrient breakdown table, and meals with foods and approximate portions. However, exact timing is largely absent (only vague labels like 'Pre/Post-Workout' rather than specific times), and some portions are given as ranges or alternatives rather than exact amounts, which weakens the 'exact foods, portions and timing' requirement. Secondary criteria are largely satisfied: total calories are close to 2000, protein is very high (2.6g/kg, well above the 1.5-2g/kg benchmark), dairy and added sugar are avoided with thoughtful substitutions, and the meals are clearly delineated. The plan is reasonably compact but is undermined by being cut off before completion, which hurts polish and conciseness of the final product. Overall, this is a solid plan with good macro rigor and restriction compliance, but the lack of precise timing, some ambiguous portions, and the incomplete ending are meaningful deficiencies preventing a top score.</td>
-            </tr>
-        
-            <tr>
-                <td>Teenage swimmer with high caloric needs and lactose intolerance restriction</td>
-                <td class="prompt-inputs"><strong>height:</strong> 175<br><strong>weight:</strong> 68<br><strong>goal:</strong> Support high training volume and recovery for competitive swimming while maintaining lean muscle mass<br><strong>restrictions:</strong> Lactose intolerant</td>
-                <td class="criteria">• Provides a full day meal plan (breakfast, lunch, dinner, and at least one snack) suitable for a high-calorie athlete<br>• All meals and snacks are free of lactose-containing ingredients, or clearly use lactose-free substitutes<br>• Overall plan reflects high caloric and carbohydrate needs appropriate for a teenage athlete in intense training<br>• Plan is concise and compact, not overly long or verbose</td>
-                <td class="output"><pre># Nutrition Plan for Competitive Swimmer
-
-## Quick Context
-- Height/Weight: 175 cm, 68 kg → BMI ~22.2 (lean, athletic range)
-- Goal: High training volume support + recovery + lean mass maintenance
-- Constraint: Lactose intolerant (avoid dairy-based lactose, not necessarily all dairy)
-
-## Estimated Energy & Macro Needs
-
-Competitive swimmers training 2x/day or high-volume single sessions typically need:
-
-- **Calories: ~3,000–3,600 kcal/day** (varies with training phase—taper weeks need less, peak volume weeks need more)
-- **Protein: 1.6–2.0 g/kg body weight** → ~110–135g/day
-- **Carbohydrates: 6–10 g/kg body weight** → ~410–680g/day (swimming is glycogen-intensive; don't under-fuel this)
-- **Fats: 0.8–1.2 g/kg body weight** → ~55–80g/day
-
-## Sample Daily Structure
-
-**Breakfast (pre-morning practice)**
-- Oatmeal with banana, almond butter, and lactose-free milk or oat milk
-- 2 eggs
-- Coffee/tea if desired
-
-**Post-Practice Recovery (within 30-60 min)**
-- Lactose-free whey isolate or plant protein shake + banana
-- (Whey isolate is often tolerated even by lactose-intolerant folks—minimal lactose remains after processing)
-
-**Lunch**
-- Grilled chicken or salmon
-- Rice or quinoa
-- Roasted vegetables
-- Olive oil drizzle
-
-**Afternoon Snack**
-- Rice cakes with peanut butter
-- Fruit (orange, apple, or dates)
-
-**Pre-Evening Practice**
-- Small carb-focused snack: toast with honey or a banana
-
-**Dinner**
-- Lean beef, tofu, or fish
-- Sweet potato or pasta
-- Vegetables
-- Avocado or nuts for healthy fats
-
-**Before Bed (optional, supports overnight recovery)**
-- Lactose-free Greek yogurt or casein shake
-- Handful of nuts
-
-## Lactose Intolerance Notes
-- **Safe options**: hard cheeses (naturally low lactose), lactose-free milk/yogurt, whey isolate (vs. concentrate), plant-based milks (oat, almond, soy)
-- **Calcium sources without dairy**: fortified plant milks, canned salmon/sardines with bones, leafy greens, tofu (calcium-set), almonds
-
-## Key Priorities for Swimmers Specifically
-1. **Don't under-eat carbs**—this is the #1 mistake with swimmers trying to "stay lean." Glycogen depletion tanks performance and recovery.
-2. **Hydration + electrolytes** matter even though you're in water—sweat loss is real and often underestimated.
-3. **Post-practice window matters</pre></td>
-                <td class="score-col"><span class="score score-low">3</span></td>
-                <td class="reasoning">The solution meets many secondary criteria well—it addresses lactose intolerance thoroughly with alternatives, includes swimmer-specific priorities, and covers a full day of eating. However, it fails a mandatory requirement: it does not provide an exact caloric total or exact portions for foods (only ranges and non-specific descriptions like 'grilled chicken' or 'roasted vegetables' without weights), and timing is relative rather than exact. The response is also cut off before completion, which undermines both compactness and completeness. Given the mandatory requirement for exact figures, portions, and timing, this is a clear violation.</td>
-            </tr>
-        
-            <tr>
-                <td>Powerlifter following a ketogenic diet for a competition day meal plan</td>
-                <td class="prompt-inputs"><strong>height:</strong> 178<br><strong>weight:</strong> 93<br><strong>goal:</strong> Make weight and perform optimally at a powerlifting competition while staying in ketosis<br><strong>restrictions:</strong> Ketogenic diet (very low carb, high fat, moderate protein); no gluten</td>
-                <td class="criteria">• Provides a full day meal plan with clearly separated meals appropriate for competition day timing (e.g., pre-competition, between attempts, post-competition)<br>• All meals are consistent with ketogenic macronutrient ratios (low carb, high fat, moderate protein) and avoid gluten-containing ingredients<br>• Plan is compact and concise, listing foods/portions without excessive detail or unnecessary commentary<br>• Content is practical for a powerlifter of the given height and weight, supporting energy and performance needs on competition day</td>
-                <td class="output"><pre># Nutrition Plan for Ketogenic Powerlifting Prep
-
-Here's a framework based on the given stats. Note: this is general guidance—working with a sports dietitian familiar with strength sports + keto is ideal for competition prep, especially if a specific weight class is the target.
-
-## Key Considerations First
-
-- **Current weight:** 93kg (205 lbs) — need to know target weight class to determine if this is a cut, maintenance, or the rare keto bulk
-- **Keto + strength sports tension:** Performance in high-rep/high-intensity work can suffer without adequate glycogen. Strategic carb timing (if any wiggle room exists) or targeted keto (TKD) around training is worth discussing with a coach, even if strict keto is the goal otherwise.
-
-## Macro Starting Point (Assuming Maintenance/Slow Cut)
-
-**Estimated maintenance calories:** ~2,800-3,200 kcal/day (varies with activity level, training age, NEAT)
-
-| Macro | Amount | % of Calories |
-|---|---|---|
-| Protein | 180-200g | ~25-28% |
-| Fat | 200-230g | ~65-70% |
-| Net Carbs | 20-30g | ~5% |
-
-## Sample Food List (Gluten-Free, Keto)
-
-**Protein sources:**
-- Eggs, fatty fish (salmon, sardines), beef, pork, chicken thighs
-- Full-fat Greek yogurt (check carbs), whey isolate (verify gluten-free)
-
-**Fats:**
-- Olive oil, avocado oil, butter/ghee, macadamia nuts, avocados
-
-**Low-carb vegetables:**
-- Leafy greens, broccoli, zucchini, asparagus, peppers
-
-**Electrolytes (critical for lifting performance on keto):**
-- Sodium: 4-6g/day (salt food liberally, bouillon)
-- Potassium: leafy greens, avocado, or supplement
-- Magnesium: supplement (300-400mg) — deficiency kills strength/recovery
-
-## Competition-Specific Notes
-
-1. **Water/sodium manipulation for weigh-in:** Keto already causes water shifts (lower glycogen = less stored water). Be cautious layering aggressive cuts on top of keto depletion—risk of underperforming on platform.
-2. **Timing:** Last meal 2-3 hours pre-session; some lifters do better fasted on keto, others need the meal. Test this in training, not on meet day.
-3. **Between weigh-in and lifting:** If there's time, a small amount of fat/protein (not carb-refeed, since staying in ketosis) can help energy without breaking keto.
-
-## What I'd Need to Refine This
-
-- Target weight class
-- Current strength numbers / training split
-- How many weeks out from competition
-- Whether "staying in ketosis" is non-negotiable or somewhat flexible around the meet itself
-
-Want to fill in any of these so I can tighten up the numbers?</pre></td>
-                <td class="score-col"><span class="score score-low">2</span></td>
-                <td class="reasoning">The solution fails to meet the mandatory requirements. While it does provide a macronutrient breakdown (as ranges) and an estimated caloric range, it critically lacks 'Meals with exact foods, portions and timing.' Instead of a full day meal plan, the response offers a framework, food category lists, and clarifying questions - essentially treating this as a consultation rather than delivering the requested compact meal plan. There are no specific meals (e.g., '3 eggs + 2 tbsp butter at 7am') anywhere in the response. This is a direct violation of the mandatory requirement to include meals with exact foods, portions, and timing, which triggers an automatic score of 3 or lower per the grading instructions.</td>
-            </tr>
-        
-            <tr>
-                <td>Professional soccer player with gluten sensitivity preparing for match day</td>
-                <td class="prompt-inputs"><strong>height:</strong> 181<br><strong>weight:</strong> 76<br><strong>goal:</strong> Optimize energy levels and recovery for match day performance without gastrointestinal discomfort<br><strong>restrictions:</strong> Gluten sensitivity</td>
-                <td class="criteria">• Provides a full day meal plan (breakfast, lunch, pre-match snack, dinner) suitable for match day timing<br>• All meals and snacks are free of gluten-containing ingredients<br>• Meal plan reflects sports nutrition principles appropriate for a professional athlete (adequate carbohydrates for energy, moderate protein, easily digestible pre-match choices)<br>• Output is compact and concise, not exceeding a single day's plan</td>
-                <td class="output"><pre># Match Day Nutrition Plan
-
-**Profile context:** Height 181cm/Weight 76kg suggests an athletic build (BMI ~23.2). With gluten sensitivity, careful carb source selection is key for both energy and GI comfort.
-
-## Pre-Match (3-4 hours before)
-- **Base:** Gluten-free oats or rice with banana
-- **Protein:** Grilled chicken or eggs (moderate portion)
-- **Add:** Small amount of nut butter for sustained energy
-- **Avoid:** High-fiber, high-fat foods that slow digestion
-
-## 60-90 Minutes Before Kickoff
-- Small gluten-free snack: rice cakes with honey, or a banana
-- Electrolyte drink (check labels—most sports drinks are naturally GF, but verify)
-- Avoid anything new or untested—stick to familiar foods
-
-## During Match (if applicable)
-- Gluten-free sports drink for electrolytes/quick carbs
-- Avoid gels with unclear ingredient sourcing (some contain gluten-based maltodextrin—verify brand)
-
-## Post-Match Recovery (within 30-60 min)
-- **Carb + protein combo (3:1 or 4:1 ratio):**
-  - GF chocolate milk, or
-  - Rice-based protein smoothie with fruit
-- Rehydrate: water + electrolytes based on sweat loss
-
-## Recovery Meal (within 2 hours)
-- Lean protein: fish, chicken, or tofu
-- GF complex carbs: quinoa, rice, or GF pasta
-- Vegetables for micronutrients/antioxidants
-- Healthy fats: olive oil, avocado (moderate—don't overdo pre-sleep if match is at night)
-
-## Key GI-Comfort Principles
-- **Test everything in training first**—never introduce new foods on match day
-- Avoid excess fiber, fat, and dairy (if also lactose-sensitive) close to kickoff
-- Stay hydrated throughout the days leading up, not just match day
-
----
-
-Would you like me to adjust this based on match kickoff time (morning/afternoon/evening) or training schedule leading up to it?</pre></td>
-                <td class="score-col"><span class="score score-low">2</span></td>
-                <td class="reasoning">The solution provides a reasonably well-organized match-day nutrition framework with appropriate GF substitutions and sports nutrition timing logic (pre-match, during, post-match, recovery meal). However, it fails multiple explicit mandatory requirements: there is no daily caloric total, no macronutrient breakdown (grams/percentages), and no exact portions for any food item—only vague descriptors like 'moderate portion' or 'small amount' are used. Timing is described in relative terms rather than concrete meal times, and the plan lacks a clear breakfast-to-dinner full-day structure with specific foods and quantities. Since the instructions state that any violation of a mandatory requirement results in an automatic score of 3 or lower, and this solution violates all three mandatory items (calories, macros, exact portions/timing), it must be scored in the 1-3 range despite reasonable qualitative content.</td>
-            </tr>
-        
-            <tr>
-                <td>Youth gymnast with nut allergy needing nutrient-dense small frequent meals</td>
-                <td class="prompt-inputs"><strong>height:</strong> 142 cm<br><strong>weight:</strong> 34 kg<br><strong>goal:</strong> Maintain energy and support recovery for multiple daily training sessions while promoting healthy growth<br><strong>restrictions:</strong> Severe tree nut and peanut allergy; needs small frequent meals due to short training breaks</td>
-                <td class="criteria">• Plan contains no nuts, peanuts, or nut-derived ingredients (e.g., no almond/peanut butter, nut oils)<br>• Structured as multiple small meals/snacks (at least 5 eating occasions) rather than 3 large meals<br>• Each meal/snack emphasizes nutrient-dense whole foods (protein, complex carbs, fruits/vegetables) suitable for a growing youth athlete<br>• Plan is concise and fits within a single day format without excessive detail or calorie calculations</td>
-                <td class="output"><pre># Nutrition Plan for Young Athlete (Multiple Daily Training Sessions)
-
-Given the height/weight profile (BMI ~16.9), this appears to be a **child or young adolescent athlete** in intensive training (possibly gymnastics, figure skating, dance, or swimming). Here's a comprehensive approach:
-
-## Key Priorities
-1. **Adequate total calories** to support both growth AND training demands (this population is at risk of underfueling)
-2. **Frequent small meals/snacks** (every 2-3 hours) due to limited breaks
-3. **Strict nut/peanut avoidance** with safe protein alternatives
-4. **Nutrient density** for growth (calcium, iron, vitamin D, zinc)
-
-## Sample Daily Structure (5-6 eating occasions)
-
-**Breakfast**
-- Oatmeal (check facility is nut-free) with banana, honey, and seed butter (sunflower or pumpkin seed butter)
-- Milk or fortified soy milk
-
-**Mid-morning snack** (before/after first training block)
-- Greek yogurt with berries and granola (nut-free)
-- Or: cheese stick + whole grain crackers
-
-**Lunch**
-- Turkey or chicken wrap with avocado, whole grain tortilla
-- Side of fruit + pretzels
-- Milk or electrolyte drink
-
-**Afternoon snack** (pre-second training session)
-- Banana or apple with sunflower seed butter
-- Or: rice cakes with hummus
-
-**Post-training recovery snack**
-- Chocolate milk or a smoothie (fruit, yogurt, milk)
-- This combo hits the important carb-protein recovery ratio
-
-**Dinner**
-- Salmon, chicken, or tofu
-- Rice or pasta
-- Cooked vegetables
-- Fruit for dessert
-
-**Evening snack (if needed)**
-- Whole grain toast with seed butter, or cottage cheese with fruit
-
-## Nut-Free Protein/Fat Sources to Rely On
-- Seeds: sunflower, pumpkin, chia, hemp (and their butters)
-- Dairy: milk, yogurt, cheese
-- Eggs
-- Meat, poultry, fish
-- Legumes: beans, lentils, chickpeas (hummus)
-- Soy products (edamame, tofu, soy milk) if tolerated
-
-## Additional Considerations
-- **Read all labels** for "may contain traces of nuts" — many granolas, energy bars, and baked goods carry cross-contamination risk
-- **Carry a safe snack kit** to training (seed butter packets, safe bars, dried fruit)
-- **Hydration**: water throughout day, electrolyte drinks around intense/long sessions
-- **Consult a pediatric sports dietitian** — given the age, growth needs, and training volume, individualized monitoring of growth curves and energy availability is strongly recommended
-
-Would you like me to tailor this further if you can share the specific sport, age, and training hours per day?</pre></td>
-                <td class="score-col"><span class="score score-low">3</span></td>
-                <td class="reasoning">The solution is well-written, nut-free, and appropriately structured for a young athlete with frequent small meals. However, it fails multiple mandatory requirements: it does not provide any caloric total, no macronutrient breakdown, and lacks exact portions or specific meal timing (only vague time-of-day descriptors like 'mid-morning' or 'if needed' are given, not concrete times or quantities). Per the grading rubric, any violation of a mandatory requirement must result in a score of 3 or lower, regardless of the plan's otherwise reasonable quality.</td>
-            </tr>
-        
-            <tr>
-                <td>Vegan CrossFit athlete needing balanced macros without animal products</td>
-                <td class="prompt-inputs"><strong>height:</strong> 178<br><strong>weight:</strong> 82<br><strong>goal:</strong> Build lean muscle and improve CrossFit performance while staying fully plant-based<br><strong>restrictions:</strong> Vegan (no animal products); no soy due to mild intolerance</td>
-                <td class="criteria">• Plan covers exactly one day and stays concise (not overly verbose)<br>• All meals/snacks are fully vegan and contain no soy-based ingredients<br>• Includes an estimate of total daily protein intake that is adequate for an 82kg athlete building muscle (roughly 130-165g)<br>• Meals clearly draw from varied plant protein sources (e.g., legumes, grains, nuts/seeds) to ensure balanced amino acid intake</td>
+                <td>Endurance marathon runner needing high-carb fueling plan with pre-dawn training session and vegetarian dietary restriction</td>
+                <td class="prompt-inputs"><strong>height:</strong> 178<br><strong>weight:</strong> 64<br><strong>goal:</strong> High-carb fueling plan for marathon training with a pre-dawn training session<br><strong>restrictions:</strong> Vegetarian</td>
+                <td class="criteria">• Plan is limited to a single day and stays compact/concise (not overly long)<br>• Includes a pre-training meal or snack timed appropriately before the pre-dawn session<br>• Overall meal plan is carbohydrate-heavy, suitable for endurance marathon fueling<br>• All meals and snacks are strictly vegetarian (no meat or fish)<br>• Covers a full day of eating (includes at least breakfast, lunch, dinner, and a snack)</td>
                 <td class="output"><pre></pre></td>
                 <td class="score-col"><span class="score score-low">0</span></td>
-                <td class="reasoning">Error during evaluation: Model response did not include any text content</td>
+                <td class="reasoning">Error during evaluation: Could not parse JSON response. Preview: '{"strengths":["Includes clear daily caloric total (3,000-3,200 kcal) and macronutrient breakdown (carbs, protein, fat) upfront","Provides exact foods, portions, and timing for each meal/snack (e.g., \'': line 1 column 1 (char 0)</td>
             </tr>
         
             <tr>
-                <td>Elite cyclist requiring meal timing plan around a 5-hour training ride</td>
-                <td class="prompt-inputs"><strong>height:</strong> 180<br><strong>weight:</strong> 68<br><strong>goal:</strong> Fuel and recover properly for a 5-hour endurance training ride starting at 7am, maximizing glycogen availability and recovery<br><strong>restrictions:</strong> Lactose intolerant</td>
-                <td class="criteria">• Provides a full 1-day meal plan that is compact and concise, not overly long<br>• Includes specific meal/snack timing relative to the 5-hour ride (before, during, and after)<br>• Nutrition choices are appropriate for endurance cycling (e.g., carbohydrate-focused pre/during-ride, protein+carb recovery post-ride)<br>• Avoids lactose-containing ingredients throughout the plan</td>
-                <td class="output"><pre># Nutrition Plan for 5-Hour Endurance Ride (7am Start)
-
-**Stats:** 180cm, 68kg — likely ~62-65kg lean mass; BMI suggests lean, athletic build. Endurance rides of this length demand serious carb loading and glycogen management.
-
-## The Night Before
-**Dinner (7-8pm):** High-carb, moderate protein, low fat/fiber to avoid GI distress
-- Large portion of white rice or pasta (150-200g dry weight)
-- Lean protein: chicken breast or fish (150g)
-- Low-fiber veggies (cooked carrots, zucchini — skip cruciferous/beans)
-- Skip dairy sauces (lactose intolerant) — use olive oil, tomato-based sauces instead
-
-**Optional evening snack:** Banana + lactose-free yogurt or a rice-based dessert
-
-## Race Morning (7am start)
-
-**Wake ~5:00-5:15am — Pre-Ride Meal (~1.5-2 hrs before):**
-- White bread/bagel with honey or jam
-- Banana
-- Small amount of nut butter (moderate fat, easy to digest)
-- Coffee if tolerated
-- Lactose-free milk or oat milk with oats if desired
-- Target: 1-1.5g carbs/kg = **~70-100g carbs**
-
-**T-minus 20-30 min:**
-- Small gel or 20g quick carbs + water if stomach feels empty
-
-## During the Ride (5 hours)
-This is where glycogen sparing/replenishment happens:
-
-- **Carbs: 60-90g/hour** (train gut to handle this if not already)
-  - Mix of glucose/fructose sources (2:1 ratio) — sports drinks, gels, chews
-  - Since lactose intolerant, avoid milk-based recovery drinks mid-ride
-- **Fluids:** 500-750ml/hour depending on heat/sweat rate
-- **Electrolytes:** Sodium especially — 300-600mg/hour (more if hot/heavy sweater)
-- Practical fueling: gels, dates, rice cakes, banana, chews — rotate to avoid palate fatigue
-
-## Post-Ride Recovery (within 30-45 min)
-**Critical window for glycogen resynthesis:**
-- **Carb:protein ratio ~3:1 or 4:1**
-- Target: **1-1.2g carbs/kg** (70-80g) + **20-25g protein**
-
-Options (lactose-free):
-- Lactose-free chocolate milk (or homemade: oat/almond milk + cocoa + honey + pea/rice protein)
-- White rice + eggs + soy sauce
-- Smoothie: banana, oat milk, lactose-free/plant protein powder, honey, berries
-
-**Follow-up meal (1-2 hrs later):**
-- Full meal with complex carbs (potatoes, rice), lean protein, some healthy fats, and colorful vegetables to replace micronutrients lost in</pre></td>
-                <td class="score-col"><span class="score score-low">3</span></td>
-                <td class="reasoning">The solution provides a reasonably well-structured endurance nutrition plan with appropriate timing (night before, pre-ride, during-ride, post-ride) and correctly avoids lactose throughout. However, it fails two of the three mandatory requirements: there is no daily caloric total anywhere in the response, and there is no overall macronutrient breakdown for the day (only isolated carb/protein targets for select meals, not a comprehensive daily macro summary). Per the grading rules, any violation of a mandatory requirement caps the score at 3 or lower, regardless of the quality of the secondary criteria.</td>
+                <td>Teenage swimmer with two-a-day practices needing kid-friendly meals, nut allergy accommodation, and budget-conscious ingredients</td>
+                <td class="prompt-inputs"><strong>height:</strong> 173<br><strong>weight:</strong> 62<br><strong>goal:</strong> Fuel two-a-day swim practices while maintaining weight and supporting muscle recovery<br><strong>restrictions:</strong> Nut allergy (no peanuts or tree nuts); budget-friendly ingredients; kid-friendly meals a teenager will actually eat</td>
+                <td class="criteria">• Provides a full 1-day meal plan (breakfast, lunch, dinner, and snacks) sized appropriately for two-a-day swim training<br>• All meals and snacks are free of peanuts and tree nuts, with no substitutions relying on nut-based products<br>• Uses simple, inexpensive, widely available ingredients suitable for a teenage athlete's taste (e.g., no exotic or costly items)<br>• Plan is concise and compact, not overly long or complex to prepare</td>
+                <td class="output"><pre></pre></td>
+                <td class="score-col"><span class="score score-low">0</span></td>
+                <td class="reasoning">Error during evaluation: Could not parse JSON response. Preview: '{"strengths":["Includes explicit meal timing built around two-a-day swim practices, with recovery-focused snacks after each session","Uses simple, budget-friendly, kid-friendly foods (chocolate milk, ': line 1 column 1 (char 0)</td>
             </tr>
         
             <tr>
-                <td>Triathlete on a tight budget needing an affordable yet performance-optimized plan</td>
-                <td class="prompt-inputs"><strong>height:</strong> 178 cm<br><strong>weight:</strong> 70 kg<br><strong>goal:</strong> Fuel for half-Ironman training on a tight grocery budget while maintaining lean muscle<br><strong>restrictions:</strong> Lactose intolerant; no shellfish</td>
-                <td class="criteria">• Provides a full 1-day meal plan (breakfast, lunch, dinner, and snacks) suitable for a triathlete's training demands<br>• Uses affordable, budget-friendly ingredients throughout, avoiding expensive specialty items<br>• Excludes all dairy/lactose and shellfish ingredients per restrictions<br>• Plan is compact and concise, not exceeding roughly 400 tokens</td>
-                <td class="output"><pre># Nutrition Plan: Half-Ironman Training on a Budget
+                <td>Professional cyclist during a multi-day race requiring rapid glycogen replenishment, gluten-free options, and meals eaten on-the-go between stages</td>
+                <td class="prompt-inputs"><strong>height:</strong> 180<br><strong>weight:</strong> 68<br><strong>goal:</strong> Rapid glycogen replenishment and sustained energy for back-to-back race stages during a multi-day cycling tour<br><strong>restrictions:</strong> Gluten-free; all meals must be portable/eaten on-the-go between stages</td>
+                <td class="criteria">• Provides a full 1-day meal plan (breakfast, lunch/on-bike snacks, dinner, plus recovery snack) sized appropriately for the athlete's weight and endurance goal<br>• All meals and snacks are explicitly gluten-free<br>• Meals are described as portable or easy to eat on-the-go, suitable for consumption between or during race stages<br>• Emphasizes high-carbohydrate, fast-glycogen-replenishing food choices, especially immediately post-stage<br>• Output is compact and concise, not overly long-winded</td>
+                <td class="output"><pre># One-Day Meal Plan: Multi-Stage Cycling Tour
+**Athlete Profile:** 180cm, 68kg | Goal: Rapid glycogen replenishment, sustained energy, gluten-free, fully portable
 
-## The Numbers First
-
-At 178cm/70kg, you're likely in a solid athletic range already. For half-Ironman training (roughly 8-12+ hours/week combining swim/bike/run), you're looking at:
-
-- **Calories:** ~2,800-3,600/day depending on training phase (higher on long ride/brick days)
-- **Protein:** 140-160g/day (1.6-2.0g/kg) to maintain lean mass under high training stress
-- **Carbs:** 5-8g/kg on heavy days (350-560g) — this is your priority, not fat or protein
-- **Fat:** Fill remaining calories, don't skimp below ~20% of intake
-
-## Budget-Friendly Staples (Lactose-Free Focus)
-
-**Protein sources:**
-- Eggs (cheapest protein per gram, ~$0.20-0.30 each)
-- Canned tuna/salmon (skip shellfish, these are fine and cheap)
-- Chicken thighs (cheaper than breast, still great macros)
-- Lactose-free milk or unsweetened soy milk (soy milk is often cheapest and has good protein)
-- Firm tofu
-- Canned beans/lentils
-
-**Carbs (your fuel priority):**
-- Oats (bulk-bought, incredibly cheap per calorie)
-- Rice (white rice is fine — you need fast fuel, not just "healthy" carbs)
-- Potatoes/sweet potatoes (bulk bags)
-- Bananas
-- Bread (check for whey/milk if sensitive — most bread is fine)
-
-**Fats:**
-- Peanut butter (bulk)
-- Olive oil
-- Whole eggs (yolks included)
-
-## Sample Day Structure
-
-| Meal | Example |
-|---|---|
-| Breakfast | Oats + banana + peanut butter + lactose-free milk |
-| Pre-workout | Toast + honey, or rice cakes |
-| During long sessions | Bananas, dates, or sports drink (check for training-specific fueling) |
-| Post-workout | 3-4 eggs + rice + canned tuna, OR chicken thigh + potatoes |
-| Snacks | Trail mix, canned tuna on crackers |
-
-## Practical Tips
-
-1. **Buy in bulk:** rice, oats, frozen chicken thighs, canned fish, and frozen vegetables stretch dollars furthest
-2. **Lactose-free dairy alternatives:** lactose-free milk (Lactaid) or fortified soy milk are your best value-to-nutrition ratio — better than most nut milks for protein
-3. **Race-day/long-ride fueling:** Practice with actual sports nutrition (gels, drink mixes) during training — don't wing this on race day. Budget for this separately since whole foods aren't practical mid-bike
-4. **Batch cook:** Rice cookers and slow cookers are your best friends for cheap bulk carbs/protein
+**Estimated needs:** ~3,800-4,200 kcal | 7-9g carbs/kg (500-600g) | 1.6-2g protein/kg (110-135g) | Moderate fat
 
 ---
 
-**</pre></td>
+## PRE-STAGE (2-3 hours before start)
+**Rice & Egg Breakfast Bowl (portable container)**
+- 1.5 cups cooked white rice
+- 2 scrambled eggs
+- 1/2 banana, sliced
+- 1 tbsp honey drizzled on top
+- Pinch of salt
+
+*~650 kcal | 110g carbs | 20g protein — easy-digesting, tops off liver glycogen*
+
+---
+
+## DURING STAGE 1 (on-bike fueling, every 20-30 min)
+- 2 GF energy bars (rice-based, e.g., oat/rice crisp bars) — 400 kcal
+- 1 bottle sports drink (electrolyte + carb mix) — 150 kcal
+- 1 banana — 105 kcal
+- Handful of dried mango or dates — 200 kcal
+
+*~850 kcal | 190g carbs — target 60-90g carbs/hour*
+
+---
+
+## IMMEDIATELY POST-STAGE 1 (within 30 min — critical glycogen window)
+**Recovery Shake (portable shaker bottle)**
+- GF whey or pea protein isolate (30g protein)
+- 1 cup lactose-free milk or GF oat milk
+- 1 ripe banana
+- 1 tbsp maple syrup
+- Pinch of salt
+
+*~450 kcal | 70g carbs | 30g protein — 3:1 carb-to-protein ratio for rapid resynthesis*
+
+---
+
+## BETWEEN STAGES (packed lunch, portable)
+**Rice Paper Wraps (Vietnamese-style, no cooking needed)**
+- Rice paper wraps filled with: shredded chicken, cooked rice noodles, shredded carrot, cucumber, avocado
+- GF tamari dipping sauce
+- Side: GF pretzels or rice crackers with hummus
+- 1 cup mixed berries
+
+*~750 kcal | 100g carbs | 35g protein*
+
+---
+
+## PRE-STAGE 2 (30-45 min before, if same day)
+- GF rice cakes with honey and thin banana slices
+- Small handful of pretzels + electrolyte sip
+
+*~300 kcal | 65g carbs — quick top-up*
+
+---
+
+## EVENING RECOVERY (after final stage, portable/easy assembly)
+**GF Pasta & Protein Bowl**
+- 2 cups GF brown rice pasta
+- Grilled chicken or salmon (5-6oz)
+- Roasted vegetables (zucchini, bell peppers, s</pre></td>
                 <td class="score-col"><span class="score score-low">3</span></td>
-                <td class="reasoning">The solution provides calorie ranges and macro percentages/grams, which satisfies the letter of the mandatory requirement for macronutrient breakdown and caloric total, though it's presented as a general guideline range rather than a single concrete day's total. More critically, the 'exact foods, portions and timing' requirement is not met: portions are vague or absent (e.g., 'chicken thigh + potatoes' with no grams/cups), and timing is described only in relative terms (breakfast, pre-workout, post-workout) without clock times or duration context. This is a explicit mandatory requirement violation. The plan reads more as a framework/guide with example food lists rather than an actual prescriptive 1-day meal plan with concrete numbers. This is a meaningful deviation from what was asked (a full meal plan with exact foods/portions/timing), warranting a low score despite decent food and restriction handling.</td>
+                <td class="reasoning">The solution provides a detailed, well-structured meal plan with appropriate portability and gluten-free considerations, and per-meal calorie/carb/protein breakdowns exist for most meals. However, the mandatory requirement of providing exact foods, portions, and timing for a complete one-day plan is violated because the final meal (Evening Recovery meal) is cut off abruptly, leaving portions and quantities for that meal (and its macro breakdown) missing entirely. This is a hard violation of the 'meals with exact foods, portions and timing' mandatory criterion since the plan is incomplete. Additionally, while there's a top-line estimated daily calorie/carb/protein range, fat is not quantified at all, and there's no final summed total confirming the diet meets the stated needs. Given the incompleteness cuts off a whole meal's details, this must be scored as failing a mandatory requirement.</td>
             </tr>
         
             <tr>
-                <td>Female tennis player managing iron deficiency needing iron-rich meal plan</td>
-                <td class="prompt-inputs"><strong>height:</strong> 173<br><strong>weight:</strong> 62<br><strong>goal:</strong> Increase dietary iron intake to address diagnosed iron deficiency while maintaining energy for competitive tennis training<br><strong>restrictions:</strong> Lactose intolerant</td>
-                <td class="criteria">• Provides a full 1-day meal plan (breakfast, lunch, dinner, and at least one snack)<br>• Includes iron-rich foods in multiple meals, with plant-based (non-heme) or lactose-free heme iron sources appropriate for an athlete<br>• Avoids lactose-containing dairy items or notes lactose-free alternatives<br>• Plan is concise and compact, not exceeding roughly 400 tokens of output</td>
-                <td class="output"><pre># Nutrition Plan for Iron Deficiency + Athletic Performance (Lactose-Free)
+                <td>Combat sport athlete (MMA) making weight for competition needing low-sodium, controlled-portion meals with intermittent fasting window constraints</td>
+                <td class="prompt-inputs"><strong>height:</strong> 178<br><strong>weight:</strong> 84<br><strong>goal:</strong> Cut weight to make 77kg competition limit in 5 days while maintaining muscle and energy for training<br><strong>restrictions:</strong> Low-sodium diet; eating window restricted to 12pm-8pm (intermittent fasting); no processed or packaged foods</td>
+                <td class="criteria">• Provides a full 1-day meal plan with specific meals/snacks and portion sizes (e.g., grams or oz) that fit within the 12pm-8pm eating window<br>• Meals reflect low-sodium choices with no processed/packaged foods<br>• Plan is concise and compact, not excessively long or verbose<br>• Content is appropriate for a weight-cutting athlete (controlled portions, supports the stated goal)</td>
+                <td class="output"><pre># One-Day Meal Plan: Cutting Cut (84kg → 77kg in 5 Days)
 
-Given your BMI (~20.7, lean) and training demands as a competitive tennis player, here's a targeted approach:
+## Context & Strategy Notes
+Losing 7kg in 5 days safely means combining **modest fat loss + significant water/glycogen manipulation** toward the end of the window (last 24-48 hrs pre-weigh-in typically drop water/sodium/carbs hard). This Day 1 plan is a **moderate deficit, high-protein, low-sodium, whole-food plan** to preserve muscle while starting the taper. Adjust water-cut protocols closer to weigh-in day separately.
 
-## Priority: Iron-Rich Foods
+**Targets for today:** ~2,200-2,300 kcal | Protein ~190g | Sodium <1,500mg | Carbs moderate (training day) | All whole foods, cooked from scratch (no salt added — flavor via herbs, citrus, garlic, vinegar)
 
-**Heme iron (best absorbed, ~15-35% absorption):**
-- Lean red meat (beef, lamb) – 3-4x/week
-- Poultry (dark meat cuts have more iron than breast)
-- Fish – sardines, tuna, salmon
-- Eggs (moderate source)
+---
 
-**Non-heme iron (2-20% absorption, needs pairing—see below):**
-- Legumes: lentils, chickpeas, black beans
-- Tofu, tempeh, edamame
-- Spinach, Swiss chard, kale
-- Fortified cereals/oats
-- Pumpkin seeds, cashews, quinoa
+## Eating Window: 12:00 PM – 8:00 PM
 
-## Boost Absorption
-- **Pair non-heme iron with Vitamin C**: citrus, bell peppers, strawberries, tomatoes
-  - *Example: lentils + bell pepper stir-fry, or spinach salad + orange segments*
-- **Avoid tea/coffee within 1 hour of iron-rich meals** (tannins inhibit absorption)
-- **Cook in cast iron pans** when possible (adds trace iron)
+### 🕛 Meal 1 – 12:00 PM (Post-Fast Breaking Meal)
+**Grilled Chicken & Sweet Potato Bowl**
+- 200g grilled chicken breast (seasoned with black pepper, paprika, garlic, lemon)
+- 250g roasted sweet potato (olive oil, rosemary)
+- 150g steamed broccoli
+- 1 tbsp olive oil drizzle
+- Fresh lemon juice to taste
 
-## Managing Lactose Intolerance
-- **Calcium interferes with iron absorption anyway**, so this is somewhat helpful—just ensure calcium from lactose-free sources at *different meals*:
-  - Lactose-free milk/yogurt, hard aged cheeses (naturally low lactose), fortified plant milks (almond, oat, soy)
-  - Leafy greens, sesame seeds/tahini, sardines with bones
+*~650 kcal | 55g protein | ~90mg sodium (natural)*
 
-## Sustaining Energy for Training
+---
 
-**Around training sessions:**
-- **Pre-workout**: Oats + fruit, banana + nut butter
-- **Post-workout**: Protein + carb combo — e.g., grilled chicken/fish + quinoa + vegetables, or a lactose-free protein shake with berries
+### 🕒 Meal 2 – 3:00 PM (Pre/Post-Training Fuel)
+**Beef & Rice with Vegetables**
+*(Time around your training session for best performance)*
+- 180g lean ground beef or sirloin, pan-seared (garlic, cumin, black pepper)
+- 200g cooked white rice
+- 100g sautéed spinach (garlic, splash of vinegar)
+- 1/2 avocado
 
-**Daily energy support:**
-- Complex carbs: brown rice, sweet potatoes, whole grains
-- Healthy fats: avocado, olive oil, nuts/seeds
-- Adequate hydration + electrolytes (important since sweat losses can also deplete iron slightly)
+*~700 kcal | 50g protein | ~120mg sodium*
 
-## Sample Day
-- **Breakfast**: Fortified oats + strawberries + pumpkin seeds
-- **Lunch**: Beef or lentil salad with bell peppers, spinach, citrus vinaigrette
-- **Pre-training snack**: Banana + almond butter
-- **Dinner**: Salmon or dark-meat chicken + quinoa + roasted vegetables
-- **Post-training**: Lactose-free yogurt (calcium/protein) or a soy-based shake — timed away from iron-heavy meals
+---
 
-## Practical Notes
-- Recheck ferritin/iron panel in </pre></td>
-                <td class="score-col"><span class="score score-low">2</span></td>
-                <td class="reasoning">The solution fails multiple mandatory requirements. It provides no daily caloric total, no macronutrient breakdown (no grams or percentages of protein/carbs/fat), and no exact portions for any food items. While meal timing is loosely referenced (breakfast, lunch, pre-training, dinner, post-training), there are no exact clock times or precise quantities like '150g chicken breast' or '1 cup quinoa.' The sample day list simply names foods without portions. Additionally, the response is cut off mid-sentence, indicating incompleteness. Given that the task explicitly requires exact portions, caloric totals, and macronutrient breakdowns as mandatory criteria, and none of these are met, this triggers automatic failure per the grading rules.</td>
+### 🕕 Meal 3 – 6:00 PM (Recovery Meal)
+**Baked Salmon with Quinoa**
+- 200g baked salmon (dill, lemon, black pepper — no salt)
+- 150g cooked quinoa
+- 150g roasted asparagus
+- Squeeze of fresh lime
+
+*~600 kcal | 45g protein | ~110mg sodium (fish naturally contains some sodium)*
+
+---
+
+### 🕖 Meal 4 – 7:30 PM (Light Closing Snack Before Fast)
+**Greek Yogurt & Berries**
+- 200g plain, unsweetened Greek yogurt
+- 100g mixed berries
+- 15g raw almonds or walnuts
+- Cinnamon to taste
+
+*~300 kcal | 25g protein | ~60mg sodium*
+
+---
+
+## Daily Totals (Approximate)
+| Nutrient | Amount |
+|---|---|</pre></td>
+                <td class="score-col"><span class="score score-low">3</span></td>
+                <td class="reasoning">The solution provides a well-structured, compact meal plan with four meals, specific gram portions, exact timing within the eating window, and appropriate whole-food, low-sodium choices suited to a cutting athlete. However, the mandatory requirement of including a daily caloric total and macronutrient breakdown is only partially satisfied—the intro gives target ranges (kcal, protein, sodium) but the actual 'Daily Totals' table meant to sum up real achieved values is truncated and only shows the header row with no data. This means the actual computed daily total and macro breakdown are missing from the delivered output, which is a mandatory requirement violation since the task explicitly requires the output to include a daily caloric total and macronutrient breakdown, not just target estimates in prose in the intro. This truncation makes the mandatory criteria technically unmet as delivered.</td>
+            </tr>
+        
+            <tr>
+                <td>Competitive powerlifter on a cutting phase requiring high-protein, moderate-carb meals with strict calorie ceiling and lactose intolerance</td>
+                <td class="prompt-inputs"><strong>height:</strong> 178<br><strong>weight:</strong> 83<br><strong>goal:</strong> Cut body fat while preserving strength and lean muscle mass for upcoming powerlifting competition weigh-in<br><strong>restrictions:</strong> Lactose intolerant; daily calorie ceiling of 2200 kcal; high-protein, moderate-carb, low-fat macro split</td>
+                <td class="criteria">• Provides a full 1-day meal plan (breakfast, lunch, dinner, and at least one snack) with no meal exceeding practical prep complexity<br>• Total daily calories stay at or under the 2200 kcal ceiling<br>• Meals are clearly high-protein and moderate-carb, with approximate macro breakdown (protein/carbs/fat) provided for the day or per meal<br>• All listed foods are free of lactose/dairy-based lactose sources (or explicitly lactose-free alternatives are used)<br>• Plan is concise and compact, not excessively long or verbose</td>
+                <td class="output"><pre></pre></td>
+                <td class="score-col"><span class="score score-low">0</span></td>
+                <td class="reasoning">Error during evaluation: Could not parse JSON response. Preview: '{"strengths":["Includes all mandatory elements: daily caloric total, macro breakdown, and explicit meals with foods, portions, and timing","All foods align with lactose restriction (dairy alternatives': line 1 column 1 (char 0)</td>
             </tr>
         
             </tbody>
