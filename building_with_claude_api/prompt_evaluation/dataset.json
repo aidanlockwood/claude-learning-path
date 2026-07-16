@@ -1,0 +1,11 @@
+[
+  {
+    "task": "Write a Python function that validates an AWS IAM role ARN and returns True if it matches the correct format, False otherwise"
+  },
+  {
+    "task": "Create a JSON object that represents an AWS S3 bucket policy allowing read-only access to objects with a specific prefix for authenticated users"
+  },
+  {
+    "task": "Write a regular expression pattern that matches valid AWS EC2 instance IDs in the format i-xxxxxxxxx where x is a hexadecimal character"
+  }
+]
