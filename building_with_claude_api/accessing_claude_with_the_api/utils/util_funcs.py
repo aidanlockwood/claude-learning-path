@@ -1,10 +1,13 @@
+from pathlib import Path
 from anthropic import Anthropic
+from dotenv import load_dotenv
 from datetime import datetime, timedelta
+
+load_dotenv(Path(__file__).resolve().parents[3] / ".env")
 
 ## From the multi turn conversations lesson
 def api_client_setup(model = "claude-sonnet-5"):
     client = Anthropic()
-    model = model
 
     return client, model
 

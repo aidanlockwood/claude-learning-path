@@ -1,9 +1,14 @@
+from pathlib import Path
 from anthropic import Anthropic
+from datetime import datetime
+from dotenv import load_dotenv
+from anthropic.types import ToolParam
+
+load_dotenv(Path(__file__).resolve().parents[3] / ".env")
 
 ## From the multi turn conversations lesson
 def api_client_setup(model = "claude-sonnet-5"):
     client = Anthropic()
-    model = model
 
     return client, model
 
@@ -23,12 +28,17 @@ def add_assistant_message(messages, text):
     }
     messages.append(assistant_message)
 
-def chat(messages, system = None, stream = False, output_config = None):
+def chat(messages, 
+         system = None, 
+         stream = False, 
+         output_config = None,
+         tools = []):
     params = {
         "model": model,
         "max_tokens": 1000,
         "messages": messages,
-        "stream": stream
+        "stream": stream,
+        "tools": tools
     }
 
     if system:
@@ -39,4 +49,42 @@ def chat(messages, system = None, stream = False, output_config = None):
 
     message = client.messages.create(**params)
 
-    return message.content[0].text
+    text_blocks = [
+        block.text
+        for block in message.content
+        if hasattr(block, "text") and block.text
+    ]
+
+    if text_blocks:
+        return "".join(text_blocks)
+
+    return message.content
+
+get_current_datetime_schema = ToolParam({
+  "name": "get_current_datetime",
+  "description": "Return the current local datetime from the runtime environment as a formatted string. Use this tool when the user asks for the current date, time, or a current datetime in a custom format. Do not use it for date arithmetic, future/past calculations, or timezone conversion. The optional date_format parameter must be a non-empty Python strftime format string. If omitted, the tool uses '%Y-%m-%d %H:%M:%S'.",
+  "strict": True,
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "date_format": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Optional Python strftime format string used to format the current datetime. Must not be empty. Defaults to '%Y-%m-%d %H:%M:%S'. Example: '%A, %B %d, %Y %I:%M:%S %p'.",
+        "default": "%Y-%m-%d %H:%M:%S"
+      }
+    },
+    "additionalProperties": False
+  },
+  "input_examples": [
+    {},
+    {
+      "date_format": "%A, %B %d, %Y %I:%M:%S %p"
+    }
+  ]
+})
+
+def get_current_datetime(date_format = "%Y-%m-%d %H:%M:%S"): 
+    if not date_format: 
+        raise ValueError('date_format cannot be empty')
+    return datetime.now().strftime(date_format)
