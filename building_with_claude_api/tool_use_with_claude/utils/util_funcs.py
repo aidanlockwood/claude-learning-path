@@ -32,14 +32,16 @@ def chat(messages,
          system = None, 
          stream = False, 
          output_config = None,
-         tools = []):
+         tools = None):
     params = {
         "model": model,
         "max_tokens": 1000,
         "messages": messages,
         "stream": stream,
-        "tools": tools
     }
+
+    if tools: 
+        params['tools'] = tools
 
     if system:
         params["system"] = system
@@ -48,17 +50,12 @@ def chat(messages,
         params["output_config"] = output_config
 
     message = client.messages.create(**params)
+    return message
 
-    text_blocks = [
-        block.text
-        for block in message.content
-        if hasattr(block, "text") and block.text
-    ]
-
-    if text_blocks:
-        return "".join(text_blocks)
-
-    return message.content
+def text_from_message(message):
+    return "\n".join( 
+        [block.text for block in message.content if block.type == 'text']
+    )
 
 get_current_datetime_schema = ToolParam({
   "name": "get_current_datetime",
