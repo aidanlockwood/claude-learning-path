@@ -4,6 +4,8 @@ from datetime import datetime
 from dotenv import load_dotenv
 from anthropic.types import ToolParam
 
+from anthropic.types import Message
+
 load_dotenv(Path(__file__).resolve().parents[3] / ".env")
 
 ## From the multi turn conversations lesson
@@ -14,17 +16,17 @@ def api_client_setup(model = "claude-haiku-4-5"):
 
 client, model = api_client_setup()
 
-def add_user_message(messages, text):
+def add_user_message(messages, message):
     user_message = { 
         'role': 'user', 
-        'content': text
+        'content': message.content if isinstance(message, Message) else message
     }
     messages.append(user_message)
 
-def add_assistant_message(messages, text):
+def add_assistant_message(messages, message):
     assistant_message = { 
         'role': 'assistant', 
-        'content': text
+        'content': message.content if isinstance(message, Message) else message
     }
     messages.append(assistant_message)
 
