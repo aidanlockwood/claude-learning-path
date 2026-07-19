@@ -4,6 +4,7 @@ from anthropic import Anthropic
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from anthropic.types import ToolParam
+from .text_editor_tool import TextEditorTool, get_text_edit_schema
 
 from anthropic.types import Message
 
@@ -12,15 +13,17 @@ load_dotenv(Path(__file__).resolve().parents[3] / ".env")
 ## From the multi turn conversations lesson
 def api_client_setup(model = "claude-haiku-4-5"):
     client = Anthropic()
-
     return client, model
 
 client, model = api_client_setup()
+text_editor_tool = TextEditorTool(
+    base_dir=str(Path(__file__).resolve().parents[1])
+)
+text_editor_schema = get_text_edit_schema(model)
 
 def _message_content(message):
     # Beta stream messages are not always the same concrete class as Message.
     return getattr(message, "content", message)
-
 
 def add_user_message(messages, message):
     content = _message_content(message)
@@ -105,6 +108,32 @@ def run_tool(tool_name, tool_input):
         return add_duration_to_datetime(**tool_input)
     elif tool_name == 'set_reminder':
         return set_reminder(**tool_input)
+    elif tool_name in ('str_replace_based_edit_tool', 'str_replace_editor'):
+        command = tool_input['command']
+        if command == 'view':
+            return text_editor_tool.view(
+                tool_input['path'], tool_input.get('view_range')
+            )
+        elif command == 'str_replace':
+            return text_editor_tool.str_replace(
+                tool_input['path'], tool_input['old_str'], tool_input['new_str']
+            )
+        elif command == 'create':
+            return text_editor_tool.create(
+                tool_input['path'], tool_input['file_text']
+            )
+        elif command == 'insert': 
+            return text_editor_tool.insert(
+                tool_input['path'], 
+                tool_input['insert_line'], 
+                tool_input['new_str']
+            )
+        elif command == 'undo_edit':
+            return text_editor_tool.undo_edit(
+                tool_input['path']
+            )
+        else:
+            raise Exception(f'Unknown text editor command: {command}')
     else:
         raise ValueError(f"Unsupported tool: {tool_name}")
 
@@ -240,7 +269,8 @@ def run_conversation(messages):
         response = chat(messages, tools = [
             get_current_datetime_schema, 
             add_duration_to_datetime_schema,
-            set_reminder_schema
+            set_reminder_schema,
+            text_editor_schema
         ])
 
         add_assistant_message(messages, response)
