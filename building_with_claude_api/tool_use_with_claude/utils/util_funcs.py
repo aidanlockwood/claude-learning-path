@@ -17,17 +17,26 @@ def api_client_setup(model = "claude-haiku-4-5"):
 
 client, model = api_client_setup()
 
+def _message_content(message):
+    # Beta stream messages are not always the same concrete class as Message.
+    return getattr(message, "content", message)
+
+
 def add_user_message(messages, message):
-    user_message = { 
-        'role': 'user', 
-        'content': message.content if isinstance(message, Message) else message
+    content = _message_content(message)
+    if not isinstance(content, list):
+        content = [{"type": "text", "text": content}]
+
+    user_message = {
+        "role": "user",
+        "content": content,
     }
     messages.append(user_message)
 
 def add_assistant_message(messages, message):
-    assistant_message = { 
-        'role': 'assistant', 
-        'content': message.content if isinstance(message, Message) else message
+    assistant_message = {
+        "role": "assistant",
+        "content": _message_content(message),
     }
     messages.append(assistant_message)
 
