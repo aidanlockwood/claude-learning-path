@@ -6,4 +6,4 @@
 
 *__init__.py
 *.pyc
-*/.backups
+building_with_claude_api/tool_use_with_claude/.backups/main.py.1784499835
