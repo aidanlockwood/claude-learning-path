@@ -76,6 +76,12 @@ class BM25Index:
         self._corpus_tokens.append(doc_tokens)
         self._update_stats_add(doc_tokens)
 
+    def add_documents(self, documents: List[Dict[str, Any]]):
+        if not isinstance(documents, list):
+            raise TypeError("Documents must be provided as a list.")
+        for document in documents:
+            self.add_document(document)
+
     def _compute_bm25_score(
         self, query_tokens: List[str], doc_index: int
     ) -> float:

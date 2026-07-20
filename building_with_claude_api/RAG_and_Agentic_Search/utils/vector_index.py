@@ -35,6 +35,45 @@ class VectorIndex:
         vector = self._embedding_fn(content)
         self.add_vector(vector=vector, document=document)
 
+    def add_documents(self, documents: List[Dict[str, Any]]):
+        if not self._embedding_fn:
+            raise ValueError(
+                "Embedding function not provided during initialization."
+            )
+        if not isinstance(documents, list):
+            raise TypeError("Documents must be provided as a list.")
+        if not documents:
+            return
+
+        contents: List[str] = []
+        valid_documents: List[Dict[str, Any]] = []
+
+        for document in documents:
+            if not isinstance(document, dict):
+                raise TypeError("Document must be a dictionary.")
+            if "content" not in document:
+                raise ValueError(
+                    "Document dictionary must contain a 'content' key."
+                )
+
+            content = document["content"]
+            if not isinstance(content, str):
+                raise TypeError("Document 'content' must be a string.")
+
+            contents.append(content)
+            valid_documents.append(document)
+
+        vectors = self._embedding_fn(contents)
+        if not isinstance(vectors, list):
+            raise TypeError("Embedding function must return a list of vectors.")
+        if len(vectors) != len(valid_documents):
+            raise ValueError(
+                "Embedding count must match document count."
+            )
+
+        for vector, document in zip(vectors, valid_documents):
+            self.add_vector(vector=vector, document=document)
+
     def search(
         self, query: Any, k: int = 1
     ) -> List[Tuple[Dict[str, Any], float]]:
