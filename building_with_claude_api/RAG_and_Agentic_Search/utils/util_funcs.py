@@ -1,4 +1,28 @@
 import re
+from anthropic import Anthropic
+
+import voyageai
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+## From the multi turn conversations lesson
+def api_client_setup(model = "claude-haiku-4-5"):
+    client = Anthropic()
+
+    print(f'Initialised {client} with the model: {model}')
+    return client, model
+
+client, model = api_client_setup()
+voyage_client = voyageai.Client()
+
+# Embedding Generation
+def generate_embedding(chunks, model="voyage-3-large", input_type="query"):
+    is_list = isinstance(chunks, list)
+    input = chunks if is_list else [chunks]
+    result = voyage_client.embed(input, model=model, input_type=input_type)
+    return result.embeddings if is_list else result.embeddings[0]
 
 # Chunk by a set number of charactesr
 def chunk_by_char(text, chunk_size=150, chunk_overlap=20):
