@@ -23,7 +23,7 @@ def read_document(doc_id: str = Field(description = 'ID of the document to read'
     return docs[doc_id]
 
 @mcp.tool(
-    name = 'Edit Document', 
+    name = 'edit_document',
     description = "Edit a document by replacing a string in the documents content with a new string"
 )
 def edit_document(doc_id: str = Field(description = "ID of the document that will be edited"), 
